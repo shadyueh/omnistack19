@@ -1,9 +1,11 @@
 const express = require('express');
 const app = express();
 
-//rota teste inicial
-app.get('/teste', (req, res) => {
-    return res.send('Hello World');
-});
-
+//habilita suporte a estrutura de dados JSON
+app.use(express.json());
+//habilita transmissão de arquivos nas requisições
+app.use(express.urlencoded({extended:true}));
+//importando as rotas
+app.use(require('./routes'));
+//porta do serviço
 app.listen(3333);
